@@ -4,6 +4,7 @@
 ## Author: Ranoth_
 ## Version: v1.1.0
 ## DefaultState: Enabled
+## X-Curse-Project-ID: 993049
 
 embeds.xml
 
