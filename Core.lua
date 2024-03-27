@@ -132,6 +132,7 @@ function LAR_M_R:OnToyUpdate()
 end
 
 function LAR_M_R:OnMouseDown(frame, button)
+    
     if button ~= "RightButton" then return end
     if Checks() and isPlayerEngineer() and DoesPlayerHaveToy() and IsToyOnCooldown() then
         UseRang()
