@@ -103,23 +103,27 @@ local function FindOwnedRang()
 end
 
 local function UseRang()
-    local targetGUID, mouseoverGUID = _G.UnitGUID("target"), _G.UnitGUID("mouseover")
-    -- print(targetGUID, mouseoverGUID)
+    local mouseoverGUID = _G.UnitGUID("mouseover")
+    local staticMouseoverGUID
+    if mouseoverGUID ~= nil then staticMouseoverGUID = mouseoverGUID end
+
     SecureButton:SetAttribute("type", "unit")
-    SecureButton:SetAttribute("target", targetGUID or mouseoverGUID)
-    
+    SecureButton:SetAttribute("target", staticMouseoverGUID)
+
     SecureButton:SetAttribute("type", "item")
     SecureButton:SetAttribute("item", select(1, GetItemInfo(usedRangId)))
-    
+
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "SecureButton")
     lastClick = 0
 end
 
 local function UseFetch()
-    local targetGUID, mouseoverGUID = _G.UnitGUID("target"), _G.UnitGUID("mouseover")
-    -- print(targetGUID, mouseoverGUID)
+    local mouseoverGUID = _G.UnitGUID("mouseover")
+    local staticMouseoverGUID
+    if mouseoverGUID ~= nil then staticMouseoverGUID = mouseoverGUID end
+
     SecureButton:SetAttribute("type", "unit")
-    SecureButton:SetAttribute("target", targetGUID or mouseoverGUID)
+    SecureButton:SetAttribute("target", staticMouseoverGUID)
 
     SecureButton:SetAttribute("type", "spell")
     SecureButton:SetAttribute("spell", select(1, GetSpellInfo(fetchSpellId)))
@@ -132,7 +136,6 @@ function LAR_M_R:OnToyUpdate()
 end
 
 function LAR_M_R:OnMouseDown(frame, button)
-    
     if button ~= "RightButton" then return end
     if Checks() and isPlayerEngineer() and DoesPlayerHaveToy() and IsToyOnCooldown() then
         UseRang()
