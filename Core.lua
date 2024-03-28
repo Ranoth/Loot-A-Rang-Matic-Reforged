@@ -56,7 +56,7 @@ local function IsInCombat()
 end
 
 local function IsPlayerMounted()
-    return not (IsMounted() or IsFlying() or IsSwimming())
+    return not IsMounted()
 end
 
 local function IsPlayerDead()
