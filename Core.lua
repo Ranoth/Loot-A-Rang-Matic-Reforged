@@ -3,7 +3,7 @@ local WorldFrame = _G.WorldFrame
 local SecureButton
 local lastClick
 
-LAR_M_R = LibStub("AceAddon-3.0"):NewAddon("ThisAddon", "AceEvent-3.0", "AceHook-3.0")
+LAR_M_R = LibStub("AceAddon-3.0"):NewAddon("LootARangMaticReforged", "AceEvent-3.0", "AceHook-3.0")
 
 local fetchSpellId = 125050
 local northredRangId = 60854
