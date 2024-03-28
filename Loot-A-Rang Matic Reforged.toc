@@ -5,6 +5,7 @@
 ## Version: v1.1.2
 ## DefaultState: Enabled
 ## X-Curse-Project-ID: 993049
+## X-Wago-ID: BNBeWgGx
 
 embeds.xml
 
