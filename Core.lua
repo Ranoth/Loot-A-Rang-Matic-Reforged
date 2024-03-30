@@ -1,4 +1,4 @@
-local _G = _ENV or getfenv(0)
+local _G = getfenv(0)
 local WorldFrame = _G.WorldFrame
 local SecureButton
 local lastClick
