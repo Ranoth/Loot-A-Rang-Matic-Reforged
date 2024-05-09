@@ -3,7 +3,7 @@ local WorldFrame = _G.WorldFrame
 local SecureButton
 local lastClick
 
-LAR_M_R = LibStub("AceAddon-3.0"):NewAddon("LootARangMaticReforged", "AceEvent-3.0", "AceHook-3.0")
+local Addon = LibStub("AceAddon-3.0"):NewAddon("LootARangMaticReforged", "AceEvent-3.0", "AceHook-3.0")
 
 local fetchSpellId = 125050
 local northredRangId = 60854
@@ -11,7 +11,7 @@ local draenorRangId = 109167
 local usedRangId = nil
 
 local function MakeSecureButton()
-    SecureButton = CreateFrame("Button", "SecureButton", UIParent, "SecureActionButtonTemplate")
+    SecureButton = CreateFrame("Button", "LARMRSecureButton", UIParent, "SecureActionButtonTemplate")
     SecureButton:Hide()
     SecureButton:EnableMouse(true)
     SecureButton:RegisterForClicks("RightButtonDown", "RightButtonUp")
@@ -113,7 +113,7 @@ local function UseRang()
     SecureButton:SetAttribute("type", "item")
     SecureButton:SetAttribute("item", select(1, GetItemInfo(usedRangId)))
 
-    SetOverrideBindingClick(SecureButton, true, "BUTTON2", "SecureButton")
+    SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
 end
 
@@ -127,15 +127,15 @@ local function UseFetch()
 
     SecureButton:SetAttribute("type", "spell")
     SecureButton:SetAttribute("spell", select(1, GetSpellInfo(fetchSpellId)))
-    SetOverrideBindingClick(SecureButton, true, "BUTTON2", "SecureButton")
+    SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
 end
 
-function LAR_M_R:OnToyUpdate()
+function Addon:OnToyUpdate()
     FindOwnedRang()
 end
 
-function LAR_M_R:OnMouseDown(frame, button)
+function Addon:OnMouseDown(frame, button)
     if button ~= "RightButton" then return end
     if Checks() and isPlayerEngineer() and DoesPlayerHaveToy() and IsToyOnCooldown() then
         UseRang()
@@ -145,16 +145,16 @@ function LAR_M_R:OnMouseDown(frame, button)
     lastClick = GetTime()
 end
 
-function LAR_M_R:OnInitialize()
+function Addon:OnInitialize()
     MakeSecureButton()
 end
 
-function LAR_M_R:OnEnable()
+function Addon:OnEnable()
     FindOwnedRang()
     self:SecureHookScript(WorldFrame, "OnMouseDown", "OnMouseDown")
     self:RegisterEvent("TOYS_UPDATED", "OnToyUpdate")
 end
 
-function LAR_M_R:OnDisable()
+function Addon:OnDisable()
     self:UnhookAll()
 end
