@@ -43,7 +43,7 @@ local function isPlayerEngineer()
 end
 
 local function IsToyOnCooldown()
-    if usedRangId ~= nil then return select(1, GetItemCooldown(usedRangId)) == 0 end
+    if usedRangId ~= nil then return select(1, C_Container.GetItemCooldown(usedRangId)) == 0 end
     return false
 end
 
