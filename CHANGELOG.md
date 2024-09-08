@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.13](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.12...v1.1.13) (2024-09-08)
+
+
+### Bug Fixes
+
+* Links in pkgmeta ([be7334e](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/be7334e3e9958362db708d10e6854302d1551680))
+
 ## [1.1.12](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.11...v1.1.12) (2024-09-08)
 
 
