@@ -3,18 +3,18 @@ package-as: Loot-A-Rang-Matic-Reforged
 externals:
   libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
   libs/CallbackHandler-1.0: https://repos.wowace.com/wow/callbackhandler/trunk/CallbackHandler-1.0
-  libs/AceAddon-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceAddon-3.0
-  # libs/AceComm-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceComm-3.0
-  # AceConfig-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConfig-3.0
-  # libs/AceConsole-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConsole-3.0
-  # libs/AceDB-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceDB-3.0
-  # AceDBOptions-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceDBOptions-3.0
-  libs/AceEvent-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceEvent-3.0
-  # libs/AceGUI-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceGUI-3.0
-  libs/AceHook-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceHook-3.0
-  # libs/AceLocale-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceLocale-3.0
-  # libs/AceSerializer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceSerializer-3.0
-  # libs/AceTimer-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceTimer-3.0
+  libs/AceAddon-3.0: https://repos.wowace.com/wow/ace3/trunk/AceAddon-3.0
+  # libs/AceComm-3.0: https://repos.wowace.com/wow/ace3/trunk/AceComm-3.0
+  # AceConfig-3.0: https://repos.wowace.com/wow/ace3/trunk/AceConfig-3.0
+  # libs/AceConsole-3.0: https://repos.wowace.com/wow/ace3/trunk/AceConsole-3.0
+  # libs/AceDB-3.0: https://repos.wowace.com/wow/ace3/trunk/AceDB-3.0
+  # AceDBOptions-3.0: https://repos.wowace.com/wow/ace3/trunk/AceDBOptions-3.0
+  libs/AceEvent-3.0: https://repos.wowace.com/wow/ace3/trunk/AceEvent-3.0
+  # libs/AceGUI-3.0: https://repos.wowace.com/wow/ace3/trunk/AceGUI-3.0
+  libs/AceHook-3.0: https://repos.wowace.com/wow/ace3/trunk/AceHook-3.0
+  # libs/AceLocale-3.0: https://repos.wowace.com/wow/ace3/trunk/AceLocale-3.0
+  # libs/AceSerializer-3.0: https://repos.wowace.com/wow/ace3/trunk/AceSerializer-3.0
+  # libs/AceTimer-3.0: https://repos.wowace.com/wow/ace3/trunk/AceTimer-3.0
 
 manual-changelog:
   filename: RELEASE.md
