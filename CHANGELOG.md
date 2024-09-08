@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.11](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.10...v1.1.11) (2024-09-08)
+
+
+### Bug Fixes
+
+* Correct package-as ([d0d46e5](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/d0d46e5bec55fbbd481d2088b9545c9d993a2171))
+
 ## [1.1.10](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.9...v1.1.10) (2024-09-08)
 
 
