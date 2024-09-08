@@ -1,4 +1,4 @@
-package-as: Loot-A-RangMaticReforged
+package-as: Loot-A-Rang-Matic-Reforged
 
 externals:
   libs/LibStub: https://repos.wowace.com/wow/libstub/trunk
