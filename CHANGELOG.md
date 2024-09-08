@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.10](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.9...v1.1.10) (2024-09-08)
+
+
+### Bug Fixes
+
+* Correct .toc not matching parent directory name ([bfd4151](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/bfd415149b1c0b92e685be29f1674ec125366e4a))
+
 ## [1.1.9](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.8...v1.1.9) (2024-09-08)
 
 
