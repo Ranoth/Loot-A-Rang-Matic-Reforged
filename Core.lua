@@ -75,7 +75,7 @@ end
 local function Checks()
     local checks = {
         ["IsDoubleClick"] = IsDoubleClick(),
-        -- ["DoesPlayerHasToy"] = DoesPlayerHaveToy(),
+        -- ["DoesPlayerHaveToy"] = DoesPlayerHaveToy(),
         -- ["isPlayerEngineer"] = isPlayerEngineer(),
         -- ["IsToyOnCooldown"] = IsToyOnCooldown(),
         ["IsMoving"] = IsMoving(),
