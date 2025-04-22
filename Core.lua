@@ -111,7 +111,7 @@ local function UseRang()
     SecureButton:SetAttribute("target", staticMouseoverGUID)
 
     SecureButton:SetAttribute("type", "item")
-    SecureButton:SetAttribute("item", select(1, GetItemInfo(usedRangId)))
+    SecureButton:SetAttribute("item", select(1, C_Item.GetItemInfo(usedRangId)))
 
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
@@ -126,7 +126,7 @@ local function UseFetch()
     SecureButton:SetAttribute("target", staticMouseoverGUID)
 
     SecureButton:SetAttribute("type", "spell")
-    SecureButton:SetAttribute("spell", select(1, GetSpellInfo(fetchSpellId)))
+    SecureButton:SetAttribute("spell", select(1, C_Spell.GetSpellInfo(fetchSpellId)))
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
 end
