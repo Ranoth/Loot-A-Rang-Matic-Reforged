@@ -6,7 +6,7 @@ local lastClick
 local Addon = LibStub("AceAddon-3.0"):NewAddon("LootARangMaticReforged", "AceEvent-3.0", "AceHook-3.0")
 
 local fetchSpellId = 125050
-local northredRangId = 60854
+local northrendRangId = 60854
 local draenorRangId = 109167
 local usedRangId = nil
 
@@ -93,8 +93,8 @@ local function Checks()
 end
 
 local function FindOwnedRang()
-    if PlayerHasToy(northredRangId) then
-        usedRangId = northredRangId
+    if PlayerHasToy(northrendRangId) then
+        usedRangId = northrendRangId
     elseif PlayerHasToy(draenorRangId) then
         usedRangId = draenorRangId
     else
