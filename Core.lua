@@ -122,11 +122,21 @@ local function UseFetch()
     local staticMouseoverGUID
     if mouseoverGUID ~= nil then staticMouseoverGUID = mouseoverGUID end
 
+    local GetSpellInfo = GetSpellInfo or function(spellId)
+        if not spellId then return nil end
+
+        local spellInfo = C_Spell.GetSpellInfo(spellId);
+        if spellInfo then
+            return spellInfo.name, nil, spellInfo.iconID, spellInfo.castTime, spellInfo.minRange, spellInfo.maxRange,
+            spellInfo.spellID, spellInfo.originalIconID;
+        end
+    end
+
     SecureButton:SetAttribute("type", "unit")
     SecureButton:SetAttribute("target", staticMouseoverGUID)
 
     SecureButton:SetAttribute("type", "spell")
-    SecureButton:SetAttribute("spell", select(1, C_Spell.GetSpellInfo(fetchSpellId)))
+    SecureButton:SetAttribute("spell", select(1, GetSpellInfo(fetchSpellId)))
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
 end
