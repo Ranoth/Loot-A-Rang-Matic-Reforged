@@ -122,6 +122,7 @@ local function UseFetch()
     local staticMouseoverGUID
     if mouseoverGUID ~= nil then staticMouseoverGUID = mouseoverGUID end
 
+    -- Credit goes to SusuBunny on CurseForge for this fix
     local GetSpellInfo = GetSpellInfo or function(spellId)
         if not spellId then return nil end
 
