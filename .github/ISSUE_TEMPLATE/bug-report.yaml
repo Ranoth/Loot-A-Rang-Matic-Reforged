@@ -1,0 +1,45 @@
+name: Bug Report
+description: Create a report to help me improve Loot-A-Rang Matic Reforged!
+title : "[BUG] "
+labels:
+  - bug
+  - needs-triage
+body:
+  - type: "markdown"
+    attributes: 
+      value: |
+        ## Thanks for taking the time to report a bug!
+
+  - type: "checkboxes"
+    id: "no-duplicate"
+    attributes:
+      label: "Is there already an issue for this bug?"
+      description: "Please search to see if this bug has already been reported."
+      options:
+        - label: "I have checked that this issue has not already been reported."
+          required: true
+
+  - type: "textarea"
+    id: "bug-summary"
+    attributes:
+      label: "Summary"
+      description: "A clear and concise description of what the bug is."
+    validations:
+        required: true
+  
+  - type: "textarea"
+    id: "bug-steps"
+    attributes:
+      label: "Steps to Reproduce"
+      description: "Steps to reproduce the behavior:"
+      placeholder: "1. Go to '...' 2. Click on '....' 3. Scroll down to '....' 4. See error"
+    validations:
+      required: false
+
+  - type: "textarea"
+    id: "bug-lua-errors"
+    attributes:
+      label: "Environment"
+      description: "Please provide a copy of the Lua errors if you have any."
+    validations:
+      required: false
