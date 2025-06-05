@@ -39,7 +39,7 @@ body:
   - type: "textarea"
     id: "bug-lua-errors"
     attributes:
-      label: "Environment"
+      label: "Lua Errors"
       description: "Please provide a copy of the Lua errors if you have any."
     validations:
       required: false
