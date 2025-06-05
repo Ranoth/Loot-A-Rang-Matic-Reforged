@@ -33,11 +33,19 @@ local function DoesPlayerHaveToy()
 end
 
 local function isPlayerEngineer()
-    local prof1, prof2 = GetProfessions()
-    if prof1 and prof2 then
-        local _, _, _, _, _, _, prof1 = GetProfessionInfo(prof1)
-        local _, _, _, _, _, _, prof2 = GetProfessionInfo(prof2)
-        return prof1 == 202 or prof2 == 202
+    local requiredSkill = 70
+    local engineeringSkillLineID = 202
+    local cataEngineeringSkillLineID = 2503
+    local profs = { GetProfessions() }
+    for _, profIndex in ipairs(profs) do
+        local name, icon, skillLevel, maxSkillLevel, numAbilities, spelloffset, skillLine, skillModifier, specializationIndex, specializationOffset =
+            GetProfessionInfo(profIndex)
+        if skillLine == engineeringSkillLineID then
+            local info = C_TradeSkillUI.GetProfessionInfoBySkillLineID(cataEngineeringSkillLineID)
+            if info and info.skillLevel >= requiredSkill then
+                return true
+            end
+        end
     end
     return false
 end
@@ -129,7 +137,7 @@ local function UseFetch()
         local spellInfo = C_Spell.GetSpellInfo(spellId);
         if spellInfo then
             return spellInfo.name, nil, spellInfo.iconID, spellInfo.castTime, spellInfo.minRange, spellInfo.maxRange,
-            spellInfo.spellID, spellInfo.originalIconID;
+                spellInfo.spellID, spellInfo.originalIconID;
         end
     end
 
