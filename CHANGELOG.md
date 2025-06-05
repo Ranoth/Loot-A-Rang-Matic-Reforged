@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.20](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.19...v1.1.20) (2025-06-05)
+
+
+### Bug Fixes
+
+* Addon should function normally when only having one profession. ([28c1ccd](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/28c1ccd1434736ed355e37d4e3c63fbe16c87299))
+* Addon should use fetch when you are a hunter and engineer but you do not have the cataclysm engineering level to use the Loot-A-Rang ([28c1ccd](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/28c1ccd1434736ed355e37d4e3c63fbe16c87299))
+
 ## [1.1.19](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.18...v1.1.19) (2025-04-23)
 
 
