@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.19](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.18...v1.1.19) (2025-04-23)
+
+
+### Bug Fixes
+
+* Actually fix GetSpellInfo() being deprecated ([ff9d59e](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/ff9d59e5d7cbd68b3c358fb0d28a213809dc87d3))
+
 ## [1.1.18](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.17...v1.1.18) (2025-04-23)
 
 
