@@ -9,4 +9,6 @@
 
 embeds.xml
 
-Core.lua
+src/init.lua
+src/professionsDataLoader.lua
+src/rangUser.lua

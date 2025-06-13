@@ -1,9 +1,11 @@
+local addon_name, _ = ...
+local LARMR = LibStub("AceAddon-3.0"):GetAddon(addon_name)
+local RangUser = LARMR:NewModule("RangUser")
+
 local _G = getfenv(0)
 local WorldFrame = _G.WorldFrame
 local SecureButton
 local lastClick
-
-local Addon = LibStub("AceAddon-3.0"):NewAddon("LootARangMaticReforged", "AceEvent-3.0", "AceHook-3.0")
 
 local fetchSpellId = 125050
 local northrendRangId = 60854
@@ -150,11 +152,11 @@ local function UseFetch()
     lastClick = 0
 end
 
-function Addon:OnToyUpdate()
+function LARMR:TOYS_UPDATED()
     FindOwnedRang()
 end
 
-function Addon:OnMouseDown(frame, button)
+function LARMR:OnMouseDown(frame, button)
     if button ~= "RightButton" then return end
     if Checks() and isPlayerEngineer() and DoesPlayerHaveToy() and IsToyOnCooldown() then
         UseRang()
@@ -164,16 +166,16 @@ function Addon:OnMouseDown(frame, button)
     lastClick = GetTime()
 end
 
-function Addon:OnInitialize()
+function RangUser:OnInitialize()
     MakeSecureButton()
 end
 
-function Addon:OnEnable()
+function RangUser:OnEnable()
     FindOwnedRang()
-    self:SecureHookScript(WorldFrame, "OnMouseDown", "OnMouseDown")
-    self:RegisterEvent("TOYS_UPDATED", "OnToyUpdate")
+    LARMR:SecureHookScript(WorldFrame, "OnMouseDown", "OnMouseDown")
+    LARMR:RegisterEvent("TOYS_UPDATED")
 end
 
-function Addon:OnDisable()
-    self:UnhookAll()
+function RangUser:OnDisable()
+    LARMR:UnhookAll()
 end
