@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.21](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.20...v1.1.21) (2025-06-13)
+
+
+### Bug Fixes
+
+* Invalid data for engineering cataclysm skillLine level check ([7eb3780](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/7eb378052fe35cc58508f24d5c095fdba65ed3e0))
+
 ## [1.1.20](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.19...v1.1.20) (2025-06-05)
 
 
