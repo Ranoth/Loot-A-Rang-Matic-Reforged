@@ -1,4 +1,4 @@
-## Interface: 110105
+## Interface: 110107
 ## Title: Loot-A-Rang Matic Reforged
 ## Notes: An addon that allows the use of the Loot-A-Rang with a double right click of the mouse.
 ## Author: Ranoth_
