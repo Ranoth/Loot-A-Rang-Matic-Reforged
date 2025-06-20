@@ -82,16 +82,28 @@ local function HasFetchSpell()
     return IsHunter() and IsSpellKnown(fetchSpellId)
 end
 
+local function IsFishing()
+    -- Check if the player currently has the Fishing For Attention buff
+    local buffId = 201354 -- Fishing For Attention
+
+    local aura = C_UnitAuras.GetPlayerAuraBySpellID(buffId)
+    local auraSpellId = aura and aura.spellId or nil
+
+    if auraSpellId ~= nil then return false end
+    return true
+end
+
 local function Checks()
     local checks = {
-        ["IsDoubleClick"] = IsDoubleClick(),
+        -- ["IsDoubleClick"] = IsDoubleClick(),
         -- ["DoesPlayerHaveToy"] = DoesPlayerHaveToy(),
         -- ["isPlayerEngineer"] = isPlayerEngineer(),
         -- ["IsToyOnCooldown"] = IsToyOnCooldown(),
         ["IsMoving"] = IsMoving(),
         ["IsInCombat"] = IsInCombat(),
         ["IsPlayerMounted"] = IsPlayerMounted(),
-        ["IsPlayerDead"] = IsPlayerDead()
+        ["IsPlayerDead"] = IsPlayerDead(),
+        ["IsFishing"] = IsFishing()
     }
     for k, v in pairs(checks) do
         if not v then
@@ -158,6 +170,10 @@ end
 
 function LARMR:OnMouseDown(frame, button)
     if button ~= "RightButton" then return end
+    if not IsDoubleClick() then
+        lastClick = GetTime()
+        return
+    end
     if Checks() and isPlayerEngineer() and DoesPlayerHaveToy() and IsToyOnCooldown() then
         UseRang()
     elseif Checks() and HasFetchSpell() then
