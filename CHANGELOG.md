@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.21...v1.2.0) (2025-06-20)
+
+
+### Features
+
+* Addon does not try to use rang if the player is fishing. ([79ded9a](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/79ded9a1b2a5b4b2d6ba6d7c246df0482cd89b60))
+
+
+### Bug Fixes
+
+* Run checks only when a double click is detected ([79ded9a](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/79ded9a1b2a5b4b2d6ba6d7c246df0482cd89b60))
+
 ## [1.1.21](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.1.20...v1.1.21) (2025-06-13)
 
 
