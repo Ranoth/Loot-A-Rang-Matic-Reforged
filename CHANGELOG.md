@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.1...v1.2.2) (2025-10-21)
+
+
+### Bug Fixes
+
+* bump interface version ([18a0d32](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/18a0d32c1cb8ed04af33084ae887dd80cb87f565))
+
 ## [1.2.1](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.0...v1.2.1) (2025-09-04)
 
 
