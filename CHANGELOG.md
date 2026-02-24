@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.3](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.2...v1.2.3) (2026-02-24)
+
+
+### Bug Fixes
+
+* bump interface version for Midnight ([6182747](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/618274700790ae2ebd282f43079596a0996af4fb))
+
 ## [1.2.2](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.1...v1.2.2) (2025-10-21)
 
 
