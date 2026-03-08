@@ -29,6 +29,10 @@ local function IsDoubleClick()
     return (GetTime() - (lastClick or 0)) < 0.2
 end
 
+local function CanConfigureSecureButton()
+    return SecureButton ~= nil and not InCombatLockdown()
+end
+
 local function DoesPlayerHaveToy()
     if usedRangId ~= nil then return PlayerHasToy(usedRangId) end
     return false
@@ -125,24 +129,24 @@ local function FindOwnedRang()
 end
 
 local function UseRang()
-    local mouseoverGUID = _G.UnitGUID("mouseover")
-    local staticMouseoverGUID
-    if mouseoverGUID ~= nil then staticMouseoverGUID = mouseoverGUID end
+    if not CanConfigureSecureButton() then return false end
 
-    SecureButton:SetAttribute("type", "unit")
-    SecureButton:SetAttribute("target", staticMouseoverGUID)
+    if UnitExists("mouseover") then
+        SecureButton:SetAttribute("unit", "mouseover")
+    else
+        SecureButton:SetAttribute("unit", nil)
+    end
 
     SecureButton:SetAttribute("type", "item")
     SecureButton:SetAttribute("item", select(1, C_Item.GetItemInfo(usedRangId)))
 
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
+    return true
 end
 
 local function UseFetch()
-    local mouseoverGUID = _G.UnitGUID("mouseover")
-    local staticMouseoverGUID
-    if mouseoverGUID ~= nil then staticMouseoverGUID = mouseoverGUID end
+    if not CanConfigureSecureButton() then return false end
 
     -- Credit goes to SusuBunny on CurseForge for this fix
     local GetSpellInfo = GetSpellInfo or function(spellId)
@@ -155,13 +159,17 @@ local function UseFetch()
         end
     end
 
-    SecureButton:SetAttribute("type", "unit")
-    SecureButton:SetAttribute("target", staticMouseoverGUID)
+    if UnitExists("mouseover") then
+        SecureButton:SetAttribute("unit", "mouseover")
+    else
+        SecureButton:SetAttribute("unit", nil)
+    end
 
     SecureButton:SetAttribute("type", "spell")
     SecureButton:SetAttribute("spell", select(1, GetSpellInfo(fetchSpellId)))
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
+    return true
 end
 
 function LARMR:TOYS_UPDATED()
@@ -170,6 +178,10 @@ end
 
 function LARMR:OnMouseDown(frame, button)
     if button ~= "RightButton" then return end
+    if InCombatLockdown() then
+        lastClick = GetTime()
+        return
+    end
     if not IsDoubleClick() then
         lastClick = GetTime()
         return
