@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.3...v1.2.4) (2026-03-08)
+
+
+### Bug Fixes
+
+* Lua taint when using after combat ([38031fc](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/38031fc885345c613f24eba8f8f97057d041694a))
+
 ## [1.2.3](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.2...v1.2.3) (2026-02-24)
 
 
