@@ -21,7 +21,9 @@ local function MakeSecureButton()
     SecureButton:SetAttribute("action", "nil")
 
     SecureButton:SetScript("PostClick", function(self, button, up)
-        if up then return end
+        if up then
+            return
+        end
         ClearOverrideBindings(self)
     end)
 end
@@ -35,21 +37,29 @@ local function CanConfigureSecureButton()
 end
 
 local function DoesPlayerHaveToy()
-    if usedRangId ~= nil then return PlayerHasToy(usedRangId) end
+    if usedRangId ~= nil then
+        return PlayerHasToy(usedRangId)
+    end
     return false
 end
 
 local function isPlayerEngineer()
-    local requiredSkill = 70
+    local cataRequiredSkillForRang = 70
+    local midnightRequiredSkillForRang = 1
     local engineeringSkillLineID = 202
     local cataEngineeringSkillLineID = 2503
-    local profs = { GetProfessions() }
-    for _, profIndex in ipairs(profs) do
-        local name, icon, skillLevel, maxSkillLevel, numAbilities, spelloffset, skillLine, skillModifier, specializationIndex, specializationOffset =
-            GetProfessionInfo(profIndex)
-        if skillLine == engineeringSkillLineID then
-            local info = C_TradeSkillUI.GetProfessionInfoBySkillLineID(cataEngineeringSkillLineID)
-            if info and info.skillLevel >= requiredSkill then
+    local midnightEngineeringSkillLineID = 2910
+    local professions = {GetProfessions()}
+    for _, profIndex in ipairs(professions) do
+        local name, icon, skillLevel, maxSkillLevel, numAbilities, spelloffset, skillLine, skillModifier,
+            specializationIndex, specializationOffset = GetProfessionInfo(profIndex)
+        if skillLine == engineeringSkillLineID or skillLine == midnightEngineeringSkillLineID then
+            local cataEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(cataEngineeringSkillLineID)
+            local midnightEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(midnightEngineeringSkillLineID)
+            if cataEngineering and cataEngineering.skillLevel >= cataRequiredSkillForRang then
+                return true
+            end
+            if midnightEngineering and midnightEngineering.skillLevel >= midnightRequiredSkillForRang then
                 return true
             end
         end
@@ -58,7 +68,9 @@ local function isPlayerEngineer()
 end
 
 local function IsToyOnCooldown()
-    if usedRangId ~= nil then return select(1, C_Container.GetItemCooldown(usedRangId)) == 0 end
+    if usedRangId ~= nil then
+        return select(1, C_Container.GetItemCooldown(usedRangId)) == 0
+    end
     return false
 end
 
@@ -94,7 +106,9 @@ local function IsFishing()
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(buffId)
     local auraSpellId = aura and aura.spellId or nil
 
-    if auraSpellId ~= nil then return false end
+    if auraSpellId ~= nil then
+        return false
+    end
     return true
 end
 
@@ -132,7 +146,9 @@ local function FindOwnedRang()
 end
 
 local function UseRang()
-    if not CanConfigureSecureButton() then return false end
+    if not CanConfigureSecureButton() then
+        return false
+    end
 
     if UnitExists("mouseover") then
         SecureButton:SetAttribute("unit", "mouseover")
@@ -149,11 +165,15 @@ local function UseRang()
 end
 
 local function UseFetch()
-    if not CanConfigureSecureButton() then return false end
+    if not CanConfigureSecureButton() then
+        return false
+    end
 
     -- Credit goes to SusuBunny on CurseForge for this fix
     local GetSpellInfo = GetSpellInfo or function(spellId)
-        if not spellId then return nil end
+        if not spellId then
+            return nil
+        end
 
         local spellInfo = C_Spell.GetSpellInfo(spellId);
         if spellInfo then
@@ -180,7 +200,9 @@ function LARMR:TOYS_UPDATED()
 end
 
 function LARMR:OnMouseDown(frame, button)
-    if button ~= "RightButton" then return end
+    if button ~= "RightButton" then
+        return
+    end
     if InCombatLockdown() then
         lastClick = GetTime()
         return
