@@ -10,6 +10,7 @@ local lastClick
 local fetchSpellId = 125050
 local northrendRangId = 60854
 local draenorRangId = 109167
+local midnightRangId = 275683
 local usedRangId = nil
 
 local function MakeSecureButton()
@@ -121,6 +122,8 @@ end
 local function FindOwnedRang()
     if PlayerHasToy(northrendRangId) then
         usedRangId = northrendRangId
+    elseif PlayerHasToy(midnightRangId) then
+        usedRangId = midnightRangId
     elseif PlayerHasToy(draenorRangId) then
         usedRangId = draenorRangId
     else
