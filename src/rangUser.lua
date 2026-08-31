@@ -11,7 +11,7 @@ local fetchSpellId = 125050
 local northrendRangId = 60854
 local draenorRangId = 109167
 local midnightRangId = 275683
-local usedRangId = nil
+local lootingMethod = nil
 
 local function MakeSecureButton()
     SecureButton = CreateFrame("Button", "LARMRSecureButton", UIParent, "SecureActionButtonTemplate")
@@ -36,20 +36,34 @@ local function CanConfigureSecureButton()
     return SecureButton ~= nil and not InCombatLockdown()
 end
 
-local function DoesPlayerHaveToy()
+local function PlayerHasRang()
     if usedRangId ~= nil then
         return PlayerHasToy(usedRangId)
     end
     return false
 end
 
-local function SetUsedRangId(capabilities)
+local function SetLootingMethod(capabilities)
     if capabilities["cataRang"] then
-        usedRangId = northrendRangId
+        lootingMethod = {
+            ["method"] = "rang",
+            ["id"] = northrendRangId
+        }
     elseif capabilities["midnightRang"] then
-        usedRangId = midnightRangId
+        lootingMethod = {
+            ["method"] = "rang",
+            ["id"] = midnightRangId
+        }
+    elseif capabilities["fetch"] then
+        lootingMethod = {
+            ["method"] = "fetch",
+            ["id"] = fetchSpellId
+        }
     elseif capabilities["draenorRang"] then
-        usedRangId = draenorRangId
+        lootingMethod = {
+            ["method"] = "rang",
+            ["id"] = draenorRangId
+        }
     end
 end
 
@@ -147,7 +161,7 @@ local function GetCapabilities()
     return capabilities
 end
 
-local function UseRang()
+local function UseToy(id)
     if not CanConfigureSecureButton() then
         return false
     end
@@ -159,14 +173,14 @@ local function UseRang()
     end
 
     SecureButton:SetAttribute("type", "item")
-    SecureButton:SetAttribute("item", select(1, C_Item.GetItemInfo(usedRangId)))
+    SecureButton:SetAttribute("item", select(1, C_Item.GetItemInfo(id)))
 
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
     return true
 end
 
-local function UseFetch()
+local function UseSpell(id)
     if not CanConfigureSecureButton() then
         return false
     end
@@ -191,14 +205,14 @@ local function UseFetch()
     end
 
     SecureButton:SetAttribute("type", "spell")
-    SecureButton:SetAttribute("spell", select(1, GetSpellInfo(fetchSpellId)))
+    SecureButton:SetAttribute("spell", select(1, GetSpellInfo(id)))
     SetOverrideBindingClick(SecureButton, true, "BUTTON2", "LARMRSecureButton")
     lastClick = 0
     return true
 end
 
 function LARMR:TOYS_UPDATED()
-    SetUsedRangId(GetCapabilities())
+    SetLootingMethod(GetCapabilities())
 end
 
 function LARMR:OnMouseDown(frame, button)
@@ -213,11 +227,18 @@ function LARMR:OnMouseDown(frame, button)
         lastClick = GetTime()
         return
     end
-    if Checks() and ToyNotOnCooldown() then
-        UseRang()
-    elseif Checks() and HasFetchSpell() then
-        UseFetch()
+
+    if not Checks() then
+        lastClick = GetTime()
+        return
     end
+
+    if lootingMethod["method"] == "rang" then
+        UseToy(lootingMethod["id"])
+    elseif lootingMethod["method"] == "fetch" then
+        UseSpell(lootingMethod["id"])
+    end
+
     lastClick = GetTime()
 end
 
@@ -226,7 +247,7 @@ function RangUser:OnInitialize()
 end
 
 function RangUser:OnEnable()
-    SetUsedRangId(GetCapabilities())
+    SetLootingMethod(GetCapabilities())
     LARMR:SecureHookScript(WorldFrame, "OnMouseDown", "OnMouseDown")
     LARMR:RegisterEvent("TOYS_UPDATED")
 end
