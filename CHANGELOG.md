@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.3...v1.3.4) (2026-08-31)
+
+
+### Bug Fixes
+
+* Try using fetch before trying to use G-00 if user is a hunter ([cf2756c](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/cf2756cd315acdeb499211810b20e49e3c31667e))
+
 ## [1.3.3](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.2...v1.3.3) (2026-08-31)
 
 
