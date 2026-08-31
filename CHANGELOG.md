@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.1...v1.3.2) (2026-08-31)
+
+
+### Bug Fixes
+
+* Refactor rang usage decision framework for proper handling of a few edge cases. ([d35ac46](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/d35ac46508ae8869d6e040b613a59c2817c64400))
+
 ## [1.3.1](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.0...v1.3.1) (2026-08-31)
 
 
