@@ -44,20 +44,20 @@ local function PlayerHasRang()
 end
 
 local function SetLootingMethod(capabilities)
-    if capabilities["cataRang"] then
+    if capabilities["northrendRang"] then
         lootingMethod = {
             ["method"] = "rang",
             ["id"] = northrendRangId
-        }
-    elseif capabilities["midnightRang"] then
-        lootingMethod = {
-            ["method"] = "rang",
-            ["id"] = midnightRangId
         }
     elseif capabilities["fetch"] then
         lootingMethod = {
             ["method"] = "fetch",
             ["id"] = fetchSpellId
+        }
+    elseif capabilities["midnightRang"] then
+        lootingMethod = {
+            ["method"] = "rang",
+            ["id"] = midnightRangId
         }
     elseif capabilities["draenorRang"] then
         lootingMethod = {
@@ -130,7 +130,7 @@ end
 
 local function GetCapabilities()
     local capabilities = {
-        ["cataRang"] = false,
+        ["northrendRang"] = false,
         ["midnightRang"] = false,
         ["draenorRang"] = PlayerHasToy(draenorRangId),
         ["fetch"] = HasFetchSpell()
@@ -150,7 +150,7 @@ local function GetCapabilities()
             local midnightEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(midnightEngineeringSkillLineID)
             if cataEngineering and cataEngineering.skillLevel >= cataRequiredSkillForRang and
                 PlayerHasToy(northrendRangId) then
-                capabilities["cataRang"] = true
+                capabilities["northrendRang"] = true
             end
             if midnightEngineering and midnightEngineering.skillLevel >= midnightRequiredSkillForRang and
                 PlayerHasToy(midnightRangId) then
