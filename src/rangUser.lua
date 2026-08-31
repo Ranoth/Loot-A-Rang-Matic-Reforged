@@ -43,31 +43,17 @@ local function DoesPlayerHaveToy()
     return false
 end
 
-local function isPlayerEngineer()
-    local cataRequiredSkillForRang = 70
-    local midnightRequiredSkillForRang = 1
-    local engineeringSkillLineID = 202
-    local cataEngineeringSkillLineID = 2503
-    local midnightEngineeringSkillLineID = 2910
-    local professions = {GetProfessions()}
-    for _, profIndex in ipairs(professions) do
-        local name, icon, skillLevel, maxSkillLevel, numAbilities, spelloffset, skillLine, skillModifier,
-            specializationIndex, specializationOffset = GetProfessionInfo(profIndex)
-        if skillLine == engineeringSkillLineID or skillLine == midnightEngineeringSkillLineID then
-            local cataEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(cataEngineeringSkillLineID)
-            local midnightEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(midnightEngineeringSkillLineID)
-            if cataEngineering and cataEngineering.skillLevel >= cataRequiredSkillForRang then
-                return true
-            end
-            if midnightEngineering and midnightEngineering.skillLevel >= midnightRequiredSkillForRang then
-                return true
-            end
-        end
+local function SetUsedRangId(capabilities)
+    if capabilities["cataRang"] then
+        usedRangId = northrendRangId
+    elseif capabilities["midnightRang"] then
+        usedRangId = midnightRangId
+    elseif capabilities["draenorRang"] then
+        usedRangId = draenorRangId
     end
-    return false
 end
 
-local function IsToyOnCooldown()
+local function ToyNotOnCooldown()
     if usedRangId ~= nil then
         return select(1, C_Container.GetItemCooldown(usedRangId)) == 0
     end
@@ -114,10 +100,6 @@ end
 
 local function Checks()
     local checks = {
-        -- ["IsDoubleClick"] = IsDoubleClick(),
-        -- ["DoesPlayerHaveToy"] = DoesPlayerHaveToy(),
-        -- ["isPlayerEngineer"] = isPlayerEngineer(),
-        -- ["IsToyOnCooldown"] = IsToyOnCooldown(),
         ["IsMoving"] = IsMoving(),
         ["IsInCombat"] = IsInCombat(),
         ["IsPlayerMounted"] = IsPlayerMounted(),
@@ -126,23 +108,43 @@ local function Checks()
     }
     for k, v in pairs(checks) do
         if not v then
-            -- print(k, "failed")
             return false
         end
     end
     return true
 end
 
-local function FindOwnedRang()
-    if PlayerHasToy(northrendRangId) then
-        usedRangId = northrendRangId
-    elseif PlayerHasToy(midnightRangId) then
-        usedRangId = midnightRangId
-    elseif PlayerHasToy(draenorRangId) then
-        usedRangId = draenorRangId
-    else
-        usedRangId = nil
+local function GetCapabilities()
+    local capabilities = {
+        ["cataRang"] = false,
+        ["midnightRang"] = false,
+        ["draenorRang"] = PlayerHasToy(draenorRangId),
+        ["fetch"] = HasFetchSpell()
+    }
+    local cataRequiredSkillForRang = 70
+    local midnightRequiredSkillForRang = 1
+    local engineeringSkillLineID = 202
+    local cataEngineeringSkillLineID = 2503
+    local midnightEngineeringSkillLineID = 2910
+    local professions = {GetProfessions()}
+
+    for _, profIndex in ipairs(professions) do
+        local name, icon, skillLevel, maxSkillLevel, numAbilities, spelloffset, skillLine, skillModifier,
+            specializationIndex, specializationOffset = GetProfessionInfo(profIndex)
+        if skillLine == engineeringSkillLineID or skillLine == midnightEngineeringSkillLineID then
+            local cataEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(cataEngineeringSkillLineID)
+            local midnightEngineering = C_TradeSkillUI.GetProfessionInfoBySkillLineID(midnightEngineeringSkillLineID)
+            if cataEngineering and cataEngineering.skillLevel >= cataRequiredSkillForRang and
+                PlayerHasToy(northrendRangId) then
+                capabilities["cataRang"] = true
+            end
+            if midnightEngineering and midnightEngineering.skillLevel >= midnightRequiredSkillForRang and
+                PlayerHasToy(midnightRangId) then
+                capabilities["midnightRang"] = true
+            end
+        end
     end
+    return capabilities
 end
 
 local function UseRang()
@@ -196,7 +198,7 @@ local function UseFetch()
 end
 
 function LARMR:TOYS_UPDATED()
-    FindOwnedRang()
+    SetUsedRangId(GetCapabilities())
 end
 
 function LARMR:OnMouseDown(frame, button)
@@ -211,7 +213,7 @@ function LARMR:OnMouseDown(frame, button)
         lastClick = GetTime()
         return
     end
-    if Checks() and isPlayerEngineer() and DoesPlayerHaveToy() and IsToyOnCooldown() then
+    if Checks() and ToyNotOnCooldown() then
         UseRang()
     elseif Checks() and HasFetchSpell() then
         UseFetch()
@@ -224,7 +226,7 @@ function RangUser:OnInitialize()
 end
 
 function RangUser:OnEnable()
-    FindOwnedRang()
+    SetUsedRangId(GetCapabilities())
     LARMR:SecureHookScript(WorldFrame, "OnMouseDown", "OnMouseDown")
     LARMR:RegisterEvent("TOYS_UPDATED")
 end
