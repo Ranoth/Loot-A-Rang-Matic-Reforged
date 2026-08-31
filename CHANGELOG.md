@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.0...v1.3.1) (2026-08-31)
+
+
+### Bug Fixes
+
+* Update checks to evaluate for midnight engineering skill level ([f339a00](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/f339a0040bcf9d6f9231fa9163bdc1303cc9855e))
+
 ## [1.3.0](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.7...v1.3.0) (2026-08-31)
 
 
