@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.2...v1.3.3) (2026-08-31)
+
+
+### Bug Fixes
+
+* Empty commit because auto pr workflow didn't run ([6931738](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/6931738d04cfbcf7be375e9d07785ba1eea5f56d))
+
 ## [1.3.2](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.1...v1.3.2) (2026-08-31)
 
 
