@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.7...v1.3.0) (2026-08-31)
+
+
+### Features
+
+* Will now try to use the G-00 before trying to use the dreanor Loot-A-Rang if you don't have the northrend Loot-A-Rang. ([f388f8f](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/f388f8f5e89ae70148d2f80e972e5529f1250458))
+
 ## [1.2.7](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.2.6...v1.2.7) (2026-08-12)
 
 
