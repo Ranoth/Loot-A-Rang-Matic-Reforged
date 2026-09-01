@@ -2,6 +2,8 @@ local addon_name, _ = ...
 local LARMR = LibStub("AceAddon-3.0"):GetAddon(addon_name)
 local RangUser = LARMR:NewModule("RangUser")
 
+local ProfessionsDataLoader = LARMR:GetModule("ProfessionsDataLoader")
+
 local _G = getfenv(0)
 local WorldFrame = _G.WorldFrame
 local SecureButton
@@ -132,7 +134,8 @@ local function GetCapabilities()
     local capabilities = {
         ["northrendRang"] = false,
         ["midnightRang"] = false,
-        ["draenorRang"] = PlayerHasToy(draenorRangId),
+        -- ["draenorRang"] = PlayerHasToy(draenorRangId),
+        ["draenorRang"] = false,
         ["fetch"] = HasFetchSpell()
     }
     local cataRequiredSkillForRang = 70
@@ -219,10 +222,16 @@ function LARMR:OnMouseDown(frame, button)
     if button ~= "RightButton" then
         return
     end
+
+    if ProfessionsDataLoader:IsDataLoaded() and lootingMethod == nil then
+        SetLootingMethod(GetCapabilities())
+    end
+
     if InCombatLockdown() then
         lastClick = GetTime()
         return
     end
+
     if not IsDoubleClick() then
         lastClick = GetTime()
         return
@@ -243,11 +252,14 @@ function LARMR:OnMouseDown(frame, button)
 end
 
 function RangUser:OnInitialize()
+    if ProfessionsDataLoader:IsDataLoaded() and lootingMethod == nil then
+        SetLootingMethod(GetCapabilities())
+    end
+
     MakeSecureButton()
 end
 
 function RangUser:OnEnable()
-    SetLootingMethod(GetCapabilities())
     LARMR:SecureHookScript(WorldFrame, "OnMouseDown", "OnMouseDown")
     LARMR:RegisterEvent("TOYS_UPDATED")
 end
