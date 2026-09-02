@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.5](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.4...v1.3.5) (2026-09-01)
+
+
+### Bug Fixes
+
+* Try to fetch capabilities during right click if looting method hasn't been populated and if profession data has been retrieved ([4afc085](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/4afc085269dcee3d2c67d9fb7eb03e0e84e34fb6))
+
 ## [1.3.4](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.3...v1.3.4) (2026-08-31)
 
 
