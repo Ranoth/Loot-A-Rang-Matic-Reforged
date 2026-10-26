@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.7](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.6...v1.3.7) (2026-10-26)
+
+
+### Bug Fixes
+
+* Can't use addon in mythic + anymore because of API restrictions ([1d1cc83](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/commit/1d1cc83f94b4c29a7a04d0cb511038e4a4534765))
+
 ## [1.3.6](https://github.com/Ranoth/Loot-A-Rang-Matic-Reforged/compare/v1.3.5...v1.3.6) (2026-10-14)
 
 
