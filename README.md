@@ -1,5 +1,5 @@
 # Loot-A-Rang Matic
-This addon will try to use the [Loot-A-Rang](https://www.wowhead.com/item=60854/loot-a-rang), the [Findle's Loot-A-Rang](https://www.wowhead.com/item=109167/findles-loot-a-rang) or [Fetch](https://www.wowhead.com/mop-classic/spell=125050/fetch) if you have neither and are a hunter with the spell learned upon a double click of the right button of the mouse.
+This addon will try to use the [Loot-A-Rang](https://www.wowhead.com/item=60854/loot-a-rang), the [Findle's Loot-A-Rang](https://www.wowhead.com/item=109167/findles-loot-a-rang) or [Fetch](https://www.wowhead.com/mop-classic/spell=125050/fetch) if you have neither and are a hunter with the spell learned upon a double click of the right button of the mouse. Looting is disabled while a challenge mode is active, such as a Mythic+ dungeon.
 
 It is a rewrite of [Loot-A-Rang Matic](https://www.curseforge.com/wow/addons/loot-rang-matic) by [nimids](https://www.curseforge.com/members/nimids/projects) with slightly altered functionality as I wrote it for myself.
 

@@ -120,7 +120,8 @@ local function Checks()
         ["IsInCombat"] = IsInCombat(),
         ["IsPlayerMounted"] = IsPlayerMounted(),
         ["IsPlayerDead"] = IsPlayerDead(),
-        ["IsFishing"] = IsFishing()
+        ["IsFishing"] = IsFishing(),
+        ["IsNotInChallengeMode"] = not C_ChallengeMode.IsChallengeModeActive()
     }
     for k, v in pairs(checks) do
         if not v then
